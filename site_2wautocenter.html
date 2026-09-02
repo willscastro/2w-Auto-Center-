@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2W Auto Center - Alto Padrão de Qualidade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0a0a0a',
+                            card: '#141414',
+                            border: '#262626',
+                            accent: '#f59e0b',
+                            accentHover: '#d97706',
+                            textLight: '#f3f4f6',
+                            muted: '#a1a1aa'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        body: ['Open Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 8.5rem;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0a0a0a;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .btn-como-chegar {
+            background-color: #f59e0b !important;
+            color: #ffffff !important;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .btn-como-chegar:hover {
+            background-color: #d97706 !important;
+            color: #ffffff !important;
+            transform: translateY(-2px);
+        }
+        .btn-como-chegar span {
+            color: #ffffff !important;
+        }
+        .service-card {
+            transition: all 0.25s ease-in-out;
+            background-color: #141414;
+            border: 1px solid #262626;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: #f59e0b;
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.25);
+        }
+        /* New class for the fixed offer banner */
+        .fixed-offer-banner {
+            position: fixed;
+            top: 5rem; /* Exactly below the 5rem height header */
+            left: 0;
+            right: 0;
+            z-index: 40; /* Just below the header's z-index of 50 */
+            padding: 0.5rem 1rem;
+            text-align: center;
+            background-color: #f59e0b;
+            color: #141414;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+        @media (min-width: 640px) {
+            .fixed-offer-banner {
+                font-size: 0.875rem;
+            }
+        }
+        /* Adjust hero padding to account for the new banner height */
+        #home {
+            padding-top: 12rem; /* Increased top padding */
+        }
+        @media (min-width: 1024px) {
+             #home {
+                padding-top: 14rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-brand-textLight antialiased selection:bg-brand-accent selection:text-brand-dark">
+
+    <!-- Chosen Palette: Dark Gold Premium (Background: #0a0a0a, Cards: #141414, Accent: #f59e0b Gold/Amber, Text: #f3f4f6) -->
+    <!-- Application Structure Plan: Navigation header with smooth scroll, Hero section, 8-card Service Grid with interactive detail expansion modal, Full-width Gold Offer Banner, Quem Somos section, Quote/Budget simulator connected directly to WhatsApp, Location section with white text/icon yellow button, and clean footer. -->
+    <!-- Visualization & Content Choices: Service Catalog -> 8 Grid Cards matching design layout -> Modal/Expandable drawer; Quote Builder -> Interactive form generating encoded WhatsApp URL. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- CABEÇALHO FIXO -->
+    <header class="bg-black/95 backdrop-blur-md border-b border-neutral-800 fixed top-0 left-0 right-0 z-50 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- LOGO -->
+                <a href="#home" class="flex items-center space-x-2 group">
+                    <span class="text-3xl sm:text-4xl font-black text-brand-accent tracking-tighter group-hover:scale-105 transition-transform">2W</span>
+                    <div class="flex flex-col leading-none">
+                        <span class="font-extrabold text-lg sm:text-xl tracking-wider uppercase text-white">AUTO CENTER</span>
+                        <span class="text-[9px] text-brand-accent font-semibold tracking-widest uppercase">Alto Padrão</span>
+                    </div>
+                </a>
+
+                <!-- NAVEGAÇÃO -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-brand-accent transition-colors">Home</a>
+                    <a href="#servicos" class="text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-brand-accent transition-colors">Serviços</a>
+                    <a href="#quemsomos" class="text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-brand-accent transition-colors">Quem Somos</a>
+                    <a href="#orcamento" class="text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-brand-accent transition-colors">Orçamento</a>
+                    <a href="#contato" class="text-xs font-bold uppercase tracking-widest text-gray-300 hover:text-brand-accent transition-colors">Contato</a>
+                </nav>
+
+                <!-- BOTÃO WHATSAPP DO TOPO -->
+                <div class="flex items-center">
+                    <a href="https://wa.me/5527988620200?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Vim%20pelo%20site%20da%202W%20Auto%20Center%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="border border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-black px-4 py-2 rounded-full font-extrabold text-xs transition-all flex items-center gap-2">
+                        <span>&#x1F4F1;</span>
+                        <span>+55 (27) 98862-0200</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- FAIXA DE OFERTA FIXA (Logo abaixo do cabeçalho) -->
+    <div class="fixed-offer-banner">
+        <span>&#x1F4B3;</span>
+        <span>QUALQUER REPARO EM ATÉ 10X SEM JUROS NO CARTÃO</span>
+        <span class="hidden sm:inline">|</span>
+        <span class="hidden sm:inline text-[0.65rem]">Visa • Master • Elo • Pix</span>
+    </div>
+
+    <!-- SEÇÃO HERO -->
+    <section id="home" class="relative pb-20 lg:pb-32 overflow-hidden bg-black text-center border-b border-neutral-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase leading-tight mb-6">
+                O PADRÃO DE QUALIDADE QUE O SEU <span class="text-brand-accent inline-block">AUTOMÓVEL</span> MERECE
+            </h1>
+            <p class="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto font-body leading-relaxed mb-10">
+                Manutenção preventiva e serviços automotivos de alta precisão para garantir segurança e performance.
+            </p>
+            <div class="flex justify-center">
+                <a href="#orcamento" class="bg-yellow-400 text-black px-8 py-4 rounded-lg font-black text-sm uppercase tracking-wider hover:bg-yellow-300 transition-all shadow-lg hover:shadow-yellow-400/30">
+                    Solicitar Orçamento
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="space-y-20 py-16">
+
+        <!-- CATÁLOGO DE SERVIÇOS PREMIUM -->
+        <section id="servicos" class="scroll-mt-[10px] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-gray-800">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight">NOSSOS SERVIÇOS PREMIUM</h2>
+                <div class="w-16 h-1 bg-brand-accent mx-auto my-3 rounded-full"></div>
+                <p class="text-gray-400 text-xs sm:text-sm font-body">
+                    Excelência técnica e equipamentos de ponta para cuidar de cada detalhe do seu veículo.
+                </p>
+            </div>
+
+            <!-- GRID DE 8 CARDS DE SERVIÇOS -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="services-grid">
+                <!-- Card 1 -->
+                <div class="service-card rounded-xl p-6 text-center cursor-pointer" onclick="openServiceModal('checkup')">
+                    <div class="w-12 h-12 bg-brand-accent/10 border border-brand-accent/40 rounded-xl flex items-center justify-center mx-auto mb-4 text-brand-accent text-xl font-bold">
+                        &#x1F50D;
+                    </div>
+                    <h3 class="font-extrabold text-white text-base uppercase mb-2">Check-up Geral</h3>
+                    <p class="text-xs text-gray-400 font-body leading-relaxed">
+                        Avaliação computadorizada completa de mais de 50 itens vitais do seu veículo.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card rounded-xl p-6 text-center cursor-pointer" onclick="openServiceModal('mecanica')">
+                    <div class="w-12 h-12 bg-brand-accent/10 border border-brand-accent/40 rounded-xl flex items-center justify-center mx-auto mb-4 text-brand-accent text-xl font-bold">
+                        &#x2699;
+                    </div>
+                    <h3 class="font-extrabold text-white text-base uppercase mb-2">Mecânica Geral</h3>
+                    <p class="text-xs text-gray-400 font-body leading-relaxed">
+                        Manutenção preventiva e corretiva de motores com peças originais e homologadas.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card rounded-xl p-6 text-center cursor-pointer" onclick="openServiceModal('alinhamento')">
+                    <div class="w-12 h-12 bg-brand-accent/10 border border-brand-accent/40 rounded-xl flex items-center justify-center mx-auto mb-4 text-brand-accent text-xl font-bold">
+                        &#x1F4CF;
+                    </div>
+                    <h3 class="font-extrabold text-white text-base uppercase mb-2">Alinhamento & Balanceamento</h3>
+                    <p class="text-xs text-gray-400 font-body leading-relaxed">
+                        Ajuste geométrico tridimensional para estabilidade perfeita e economia de pneus.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-card rounded-xl p-6 text-center cursor-pointer" onclick="openServiceModal('bicos')">
+                    <div class="w-12 h-12 bg-brand-accent/10 border border-brand-accent/40 rounded-xl flex items-center justify-center mx-auto mb-4 text-brand-accent text-xl font-bold">
+                        &#x1F4A7;
+                    </div>
+                    <h3 class="font-extrabold text-white text-base uppercase mb-2">Limpeza de Bicos</h3>
+                    <p class="text-xs text-gray-400 font-body leading-relaxed">
+                        Higienização por ultrassom para restaurar a potência e reduzir consumo de combustível.
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="service-card rounded-xl p-6 text-center cursor-pointer" onclick="openServiceModal('suspensao')">
+                    <div class="w-12 h-12 bg-brand-accent/10 border border-brand-accent/40 rounded-xl flex items-center justify-center mx-auto mb-4 text-brand-accent text-xl font-bold">
+                        &#x1F6E4;
+                    </div>
+                    <h3 class="font-extrabold text-white text-base uppercase mb-2">Suspensão & Freios</h3>
+                    <p class="text-xs text-gray-400 font-body leading-relaxed">
+                        Troca de amortecedores, discos, pastilhas e fluídos para total segurança ao rodar.
+                    </p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="service-card rounded-xl p-6 text-center cursor-pointer" onclick="openServiceModal('escapamento')">
+                    <div class="w-12 h-12 bg-brand-accent/10 border border-brand-accent/40 rounded-xl flex items-center justify-center mx-auto mb-4 text-brand-accent text-xl font-bold">
+                        &#x1F4A8;
+                    </div>
+                    <h3 class="font-extrabold text-white text-base uppercase mb-2">Escapamentos</h3>
+                    <p class="text-xs text-gray-400 font-body leading-relaxed">
+                        Manutenção e substituição de abafadores, catalisadores e tubulações de exaustão.
+                    </p>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="service-card rounded-xl p-6 text-center cursor-pointer" onclick="openServiceModal('embreagem')">
+                    <div class="w-12 h-12 bg-brand-accent/10 border border-brand-accent/40 rounded-xl flex items-center justify-center mx-auto mb-4 text-brand-accent text-xl font-bold">
+                        &#x2328;
+                    </div>
+                    <h3 class="font-extrabold text-white text-base uppercase mb-2">Embreagem & Cabeçote</h3>
+                    <p class="text-xs text-gray-400 font-body leading-relaxed">
+                        Substituição de kits de embreagem e retífica especializada com vedação garantida.
+                    </p>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="service-card rounded-xl p-6 text-center cursor-pointer" onclick="openServiceModal('eletrica')">
+                    <div class="w-12 h-12 bg-brand-accent/10 border border-brand-accent/40 rounded-xl flex items-center justify-center mx-auto mb-4 text-brand-accent text-xl font-bold">
+                        &#x26A1;
+                    </div>
+                    <h3 class="font-extrabold text-white text-base uppercase mb-2">Elétrica & Baterias</h3>
+                    <p class="text-xs text-gray-400 font-body leading-relaxed">
+                        Diagnóstico do alternador, partida e baterias de alta performance com testes de carga.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- A FAIXA DE OFERTA EXCLUSIVA GRANDE FOI REMOVIDA DAQUI POIS AGORA É FIXA NO TOPO -->
+
+        <!-- SEÇÃO QUEM SOMOS -->
+        <section id="quemsomos" class="scroll-mt-8 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <h2 class="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight">QUEM SOMOS</h2>
+            <div class="w-16 h-1 bg-brand-accent mx-auto my-2 rounded-full"></div>
+            <p class="text-gray-300 text-xs sm:text-sm font-body leading-relaxed max-w-3xl mx-auto">
+                A <strong class="text-white">2W Auto Center</strong> foi concebida para oferecer aos motoristas exigentes uma alternativa transparente, rápida e altamente qualificada. Contamos com equipamentos de última geração e técnicos experientes para resolver desde o diagnóstico computadorizado até reparações complexas do seu veículo.
+            </p>
+        </section>
+
+        <!-- DÚVIDAS OU ORÇAMENTO -->
+        <section id="orcamento" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-card rounded-2xl border border-neutral-800 p-8 sm:p-10 shadow-2xl">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl sm:text-3xl font-black text-white uppercase">DÚVIDAS OU ORÇAMENTO?</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm font-body mt-2">Nossa equipe está à disposição para te atender.</p>
+                </div>
+
+                <form id="quote-form" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Nome Completo</label>
+                        <input type="text" id="client-name" placeholder="Digite seu nome" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-accent transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">E-mail</label>
+                        <input type="email" id="client-email" placeholder="seuemail@exemplo.com" class="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-accent transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">WhatsApp / Telefone</label>
+                        <input type="text" id="client-phone" placeholder="(27) 99999-9999" required class="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-accent transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Serviço Desejado ou Mensagem</label>
+                        <textarea id="client-message" rows="4" placeholder="Descreva os serviços ou dúvidas sobre seu veículo..." class="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-accent transition-colors"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-yellow-400 text-black py-4 rounded-lg font-black text-sm uppercase tracking-wider hover:bg-yellow-300 transition-colors mt-4 shadow-lg hover:shadow-yellow-400/20">
+                        Enviar Solicitação
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- FALE CONOSCO & LOCALIZAÇÃO (REDESENHADA) -->
+        <section id="contato" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center mb-12">
+                 <h2 class="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">FALE CONOSCO</h2>
+                 <div class="w-16 h-1 bg-brand-accent mx-auto my-3 rounded-full"></div>
+                 <p class="text-gray-400 text-sm font-body">Visite nossa oficina ou entre em contato pelos nossos canais oficiais.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Card Endereço -->
+                <div class="bg-brand-card p-8 rounded-2xl border border-neutral-800 hover:border-brand-accent transition-colors group flex flex-col h-full shadow-xl">
+                    <div class="w-14 h-14 bg-brand-dark rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="text-brand-accent text-2xl">&#x1F4CD;</span>
+                    </div>
+                    <h4 class="font-black text-white text-lg uppercase mb-3">Nossa Oficina</h4>
+                    <p class="text-gray-400 text-sm font-body leading-relaxed mb-6 flex-grow">
+                        Rua Salvador, 451<br>
+                        Boa Vista II<br>
+                        Serra - ES, 29161-005
+                    </p>
+                    <a href="https://www.google.com/maps/place/2VA+AUTO+CENTER/@-20.2382707,-40.285998,20z/data=!4m23!1m16!4m15!1m6!1m2!1s0xb818f257d04feb:0x2f83cdfa961fbb66!2s2VA+AUTO+CENTER,+R.+Boa+Vista+-+Boa+Vista+I,+Serra+-+ES,+29161-005!2m2!1d-40.2858493!2d-20.2384204!1m6!1m2!1s0xb818f257d04feb:0x2f83cdfa961fbb66!2s2VA+AUTO+CENTER,+R.+Boa+Vista+-+Boa+Vista+I,+Serra+-+ES,+29161-005!2m2!1d-40.2858493!2d-20.2384204!3e0!3m5!1s0xb818f257d04feb:0x2f83cdfa961fbb66!8m2!3d-20.2384104!4d-40.2858523!16s%2Fg%2F11yb1rm341?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-lg font-black text-xs uppercase tracking-wider text-brand-dark bg-brand-accent hover:bg-brand-accentHover transition-colors w-full">
+                        <span>&#x1F5FA;</span>
+                        <span>Como Chegar</span>
+                    </a>
+                </div>
+
+                <!-- Card Telefones -->
+                <div class="bg-brand-card p-8 rounded-2xl border border-neutral-800 hover:border-brand-accent transition-colors group flex flex-col h-full shadow-xl">
+                     <div class="w-14 h-14 bg-brand-dark rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="text-brand-accent text-2xl">&#x1F4DE;</span>
+                    </div>
+                    <h4 class="font-black text-white text-lg uppercase mb-3">Atendimento</h4>
+                    <div class="space-y-4 flex-grow">
+                        <div>
+                            <span class="text-gray-500 text-xs font-bold uppercase tracking-wider block mb-1">Telefone Principal / WhatsApp</span>
+                            <a href="tel:+5527998999987" class="font-black text-white text-xl hover:text-brand-accent transition-colors">(27) 98862-0200</a>
+                        </div>
+                        <div class="pt-2 border-t border-neutral-800">
+                            <span class="text-gray-500 text-xs font-bold uppercase tracking-wider block mb-1">Telefone Secundário</span>
+                             <a href="https://wa.me/5527998999987?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Vim%20pelo%20site%20da%202W%20Auto%20Center%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="font-black text-white text-xl hover:text-brand-accent transition-colors">(27) 99899-9987</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Horários -->
+                <div class="bg-brand-card p-8 rounded-2xl border border-neutral-800 hover:border-brand-accent transition-colors group flex flex-col h-full shadow-xl">
+                     <div class="w-14 h-14 bg-brand-dark rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <span class="text-brand-accent text-2xl">&#x1F551;</span>
+                    </div>
+                    <h4 class="font-black text-white text-lg uppercase mb-3">Horário de Funcionamento</h4>
+                    <div class="space-y-4 font-body flex-grow text-sm">
+                        <div class="flex justify-between items-center border-b border-neutral-800 pb-2">
+                            <span class="text-gray-400">Segunda - Sexta</span>
+                            <span class="font-bold text-white">08:00 - 18:00</span>
+                        </div>
+                        <div class="flex justify-between items-center border-b border-neutral-800 pb-2">
+                            <span class="text-gray-400">Sábado</span>
+                            <span class="font-bold text-white">08:00 - 12:00</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-400">Domingo / Feriados</span>
+                            <span class="font-bold text-brand-accent">Fechado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-black border-t border-neutral-900 py-10 text-center text-xs text-gray-500 font-body">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            <div class="flex justify-center items-center space-x-2">
+                <span class="text-2xl font-black text-brand-accent">2W</span>
+                <span class="font-extrabold text-sm uppercase text-white tracking-wider">AUTO CENTER</span>
+            </div>
+            <p>Rua Salvador, 451 - Boa Vista II - Serra, ES | Contatos: (27) 98862-0200 / (27) 99899-9987</p>
+            <p class="pt-4 border-t border-neutral-900 text-neutral-600">
+                &copy; 2026 2W Auto Center. Todos os direitos reservados. Alto Padrão de Qualidade.
+            </p>
+        </div>
+    </footer>
+
+    <!-- MODAL DE DETALHES DO SERVIÇO -->
+    <div id="service-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-brand-card border border-neutral-800 rounded-2xl max-w-md w-full p-6 relative space-y-4">
+            <button onclick="closeServiceModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
+            <div id="modal-content" class="space-y-4">
+                <!-- Conteúdo dinâmico via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT JS INTEGRADO -->
+    <script>
+        const servicesData = {
+            checkup: {
+                title: 'Check-up Geral',
+                details: 'Inspeção completa computadorizada em mais de 50 itens incluindo sistema elétrico, freios, suspensão, injeção e fluidos.',
+                benefit: 'Evita paradas inesperadas e garante a segurança em viagens longas.'
+            },
+            mecanica: {
+                title: 'Mecânica Geral',
+                details: 'Reparo e manutenção preventiva e corretiva de motores a gasolina, flex e diesel leve com troca de correia, bomba d\'água e retífica.',
+                benefit: 'Preserva a potência original e o torque do motor.'
+            },
+            alinhamento: {
+                title: 'Alinhamento & Balanceamento',
+                details: 'Ajuste de ângulos de Cáster, Câmber e Convergência em equipamento laser 3D combinado com balanceamento dinâmico.',
+                benefit: 'Aumenta a durabilidade dos pneus em até 30%.'
+            },
+            bicos: {
+                title: 'Limpeza de Bicos Injetores',
+                details: 'Higienização ultrassônica com equalização em bancada de vazão para remoção de resíduos e gomas de combustível.',
+                benefit: 'Melhora o consumo de combustível e reduz emissões.'
+            },
+            suspensao: {
+                title: 'Suspensão & Freios',
+                details: 'Troca de pastilhas, discos de freio, amortecedores, buchas, pivôs e sangria completa do sistema de fluido.',
+                benefit: 'Garanta máxima estabilidade e resposta imediata nas frenagens.'
+            },
+            escapamento: {
+                title: 'Escapamentos',
+                details: 'Diagnóstico e troca de abafadores, silenciosos e catalisadores para conformidade ambiental e redução de ruído.',
+                benefit: 'Evita multas por ruído e mantém o rendimento do motor.'
+            },
+            embreagem: {
+                title: 'Embreagem & Cabeçote',
+                details: 'Instalação de kit de embreagem (disco, platô e atuador) e plaina/retífica de cabeçotes com junta reforçada.',
+                benefit: 'Elimina trepidações e facilita trocas de marcha suave.'
+            },
+            eletrica: {
+                title: 'Elétrica & Baterias',
+                details: 'Testes digitais de carga e partida, revisão de alternadores, iluminação e substituição de baterias homologadas.',
+                benefit: 'Garante acionamento rápido e partida sem falhas.'
+            }
+        };
+
+        function openServiceModal(key) {
+            const service = servicesData[key];
+            if (!service) return;
+
+            const content = document.getElementById('modal-content');
+            content.innerHTML = `
+                <h3 class="text-xl font-black text-white uppercase border-b border-neutral-800 pb-2">${service.title}</h3>
+                <p class="text-xs text-gray-300 font-body leading-relaxed">${service.details}</p>
+                <div class="bg-brand-accent/10 border border-brand-accent/20 p-3 rounded-lg text-xs text-brand-accent font-bold">
+                    ${service.benefit}
+                </div>
+                <a href="#orcamento" onclick="closeServiceModal()" class="block w-full text-center bg-yellow-400 text-black hover:bg-yellow-300 font-extrabold py-3 rounded-lg text-xs uppercase tracking-wider transition-colors">
+                    Solicitar este serviço
+                </a>
+            `;
+
+            document.getElementById('service-modal').classList.remove('hidden');
+        }
+
+        function closeServiceModal() {
+            document.getElementById('service-modal').classList.add('hidden');
+        }
+
+        // Formulário para WhatsApp
+        document.getElementById('quote-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('client-name').value.trim();
+            const email = document.getElementById('client-email').value.trim();
+            const phone = document.getElementById('client-phone').value.trim();
+            const message = document.getElementById('client-message').value.trim();
+
+            const text = `Olá, vim pelo site da 2W Auto Center!\n\n*Nome:* ${name}\n*Telefone:* ${phone}\n*E-mail:* ${email || 'Não informado'}\n*Mensagem/Serviço:* ${message || 'Solicitação de Orçamento Geral'}`;
+            const encoded = encodeURIComponent(text);
+            window.open(`https://wa.me/5527988620200?text=${encoded}`, '_blank');
+        });
+    </script>
+</body>
+</html>
